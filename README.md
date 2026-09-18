@@ -1,4 +1,28 @@
 # CV_MaD
-latex format of my latest cv
 
-GitHub Actions now creates a dated release automatically after the release artifact is generated on pushes to `main` or manual runs.
+LaTeX repository for a CV and cover letter.
+
+## Files
+
+- `cv.tex`
+- `cover-letter.tex`
+
+## GitHub Actions
+
+The workflow in `.github/workflows/latex-build.yml` runs on every push, compiles both LaTeX files, and uploads PDF artifacts named with:
+
+- the UTC build date
+- a workflow version based on the GitHub run number and run attempt
+
+This keeps artifacts unique even when multiple builds happen on the same date.
+
+On `main`, GitHub Actions also creates a dated release automatically after the release artifact is generated, and the release workflow can also be run manually.
+
+## Local build
+
+Compile locally with:
+
+```bash
+pdflatex cv.tex
+pdflatex cover-letter.tex
+```
