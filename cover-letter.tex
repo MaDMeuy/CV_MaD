@@ -1,23 +1,54 @@
-\documentclass[11pt,a4paper]{letter}
-
+\documentclass[11pt, letterpaper]{article}
+\usepackage[utf8]{inputenc}
 \usepackage[margin=1in]{geometry}
-\usepackage[hidelinks]{hyperref}
-
-\signature{Your Name}
-\address{City, Country \\ \href{mailto:you@example.com}{you@example.com} \\ +00 123 456 789}
+\usepackage{hyperref}
+\usepackage{parskip} % Automatically adds space between paragraphs and removes indentation
 
 \begin{document}
 
-\begin{letter}{Hiring Manager \\ Company Name \\ Company Address}
+% Matching Header (Same style as your CV)
+\begin{center}
+    {\LARGE \textbf{MAURIZIO DONNA}}\\[4pt]
+    {\large SENIOR FPGA SYSTEM ARCHITECT}\\[4pt]
+    PALO ALTO, CA | +1 650 304 9266 | \href{mailto:ing.maurizio.donna@gmail.com}{ing.maurizio.donna@gmail.com}\\
+    \href{https://linkedin.com/in/mauriziodonnaing}{linkedin.com/in/mauriziodonnaing}
+\end{center}
 
-\opening{Dear Hiring Manager,}
+\vspace{3em} % Space between header and date
 
-I am writing to express my interest in the position at Company Name. This repository contains a simple LaTeX cover letter template that can be updated and compiled automatically through GitHub Actions.
+\today % Automatically inserts today's date
 
-Thank you for your time and consideration.
+\vspace{2em}
 
-\closing{Sincerely,}
+\noindent
+\textbf{Hiring Manager / Recruiting Team}\\
+\textbf{[Company Name]}\\
+\textbf{[Company Address / City, CA]}
 
-\end{letter}
+\vspace{1.5em}
+
+\noindent
+\textbf{RE: Senior FPGA System Architect -- [Job ID or Specific Role Title, if applicable]}
+
+\vspace{1.5em}
+
+\noindent
+Dear [Hiring Manager's Name, or "Hiring Team" if unknown],
+
+As a Senior FPGA System Architect with over two decades of experience bridging high-speed digital electronics, custom hardware architecture, and modern CI/CD automation, I am writing to express my strong interest in joining the engineering team at [Company Name]. Having driven advanced accelerator instrumentation at SLAC National Accelerator Laboratory and delivered high-reliability frameworks for telecom and data center giants across Europe, I am eager to bring my expertise in hardware-software co-design to support [Company Name]'s mission to [mention 1-2 specific company goals or products].
+
+What separates my approach from traditional FPGA development is a commitment to end-to-end architectural ownership. I view hardware design not just as writing RTL, but as defining the entire ecosystem. Whether I am evaluating AMD Kintex-7 and Lattice MachXO3LF device architectures or engineering custom printed circuit boards with strict 24V system requirements, I ensure that power monitoring (INA3221), optical encoders, and serial communication protocols (SPI, I2C) are perfectly aligned to guarantee system reliability from the ground up. I pair this hardware rigor with robust verification frameworks utilizing SystemVerilog, Cocotb, and GHDL to ensure flawless deployments. 
+
+Furthermore, I understand that scaling hardware development requires adopting the best practices of modern software engineering. Throughout my career, I have spearheaded the modernization of hardware workflows by architecting automated CI/CD build pipelines using GitHub Actions, GitLab CI, and Podman containers in Linux environments. Beyond the technology, I bring a strong focus on team enablement. As a certified SAFe Agile Scrum Master and an Authorized Xilinx Technical Trainer for over 18 years, I am deeply passionate about mentoring cross-functional engineering teams, aligning complex R\&D roadmaps, and setting technical standards that elevate the entire organization's output.
+
+I am highly impressed by [Company Name]'s recent work in [mention a recent company achievement, project, or technology], and I am confident that my blend of system-level hardware design and modern verification methodologies would make an immediate impact on your upcoming product cycles. 
+
+I would welcome the opportunity to discuss your architectural roadmap in a technical interview. Thank you for your time and consideration.
+
+\vspace{2em}
+
+\noindent
+Sincerely,\\[2em]
+\textbf{Maurizio Donna}
 
 \end{document}
