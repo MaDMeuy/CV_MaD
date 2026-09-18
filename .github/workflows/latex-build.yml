@@ -1,0 +1,39 @@
+name: Build LaTeX PDFs
+
+on:
+  push:
+
+jobs:
+  build-pdfs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set artifact version
+        run: |
+          echo "BUILD_DATE=$(date -u +%F)" >> "$GITHUB_ENV"
+          echo "BUILD_VERSION=v${GITHUB_RUN_NUMBER}.${GITHUB_RUN_ATTEMPT}" >> "$GITHUB_ENV"
+
+      - name: Compile CV
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: cv.tex
+
+      - name: Compile cover letter
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: cover-letter.tex
+
+      - name: Prepare upload files
+        run: |
+          mkdir -p dist
+          cp cv.pdf "dist/cv-${BUILD_DATE}-${BUILD_VERSION}.pdf"
+          cp cover-letter.pdf "dist/cover-letter-${BUILD_DATE}-${BUILD_VERSION}.pdf"
+
+      - name: Upload PDFs
+        uses: actions/upload-artifact@v4
+        with:
+          name: latex-pdfs-${{ env.BUILD_DATE }}-${{ env.BUILD_VERSION }}
+          path: dist/*.pdf
