@@ -16,7 +16,7 @@ The workflow in `.github/workflows/latex-build.yml` runs on every push, compiles
 
 This keeps artifacts unique even when multiple builds happen on the same date.
 
-On `main`, GitHub Actions also creates a dated release automatically after the release artifact is generated, and the release workflow can also be run manually.
+On `main`, GitHub Actions also creates a dated release automatically after generating `.tar.gz` and `.zip` archives that include the built PDFs, and the release workflow can also be run manually.
 
 ## Local build
 

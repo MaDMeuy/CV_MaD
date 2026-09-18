@@ -19,16 +19,35 @@ jobs:
       - name: Set release date
         run: echo "RELEASE_DATE=$(date -u +'%Y-%m-%d')" >> "$GITHUB_ENV"
 
-      - name: Create release artifact
+      - name: Compile CV
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: cv.tex
+
+      - name: Compile cover letter
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: cover-letter.tex
+
+      - name: Create release archives
         run: |
+          mkdir -p package/"CV_MaD-${RELEASE_DATE}"
           mkdir -p dist
-          git archive --format=tar.gz --output="dist/CV_MaD-${RELEASE_DATE}.tar.gz" HEAD
+          git archive HEAD | tar -x -C "package/CV_MaD-${RELEASE_DATE}"
+          cp cv.pdf cover-letter.pdf "package/CV_MaD-${RELEASE_DATE}/"
+          tar -czf "dist/CV_MaD-${RELEASE_DATE}.tar.gz" -C package "CV_MaD-${RELEASE_DATE}"
+          (
+            cd package
+            zip -r "../dist/CV_MaD-${RELEASE_DATE}.zip" "CV_MaD-${RELEASE_DATE}"
+          )
 
       - name: Upload release artifact
         uses: actions/upload-artifact@v4
         with:
           name: release-assets
-          path: dist/CV_MaD-${{ env.RELEASE_DATE }}.tar.gz
+          path: |
+            dist/CV_MaD-${{ env.RELEASE_DATE }}.tar.gz
+            dist/CV_MaD-${{ env.RELEASE_DATE }}.zip
 
   create-release:
     needs: build-artifact
