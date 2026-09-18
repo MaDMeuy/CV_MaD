@@ -3,6 +3,9 @@ name: Build LaTeX PDFs
 on:
   push:
 
+permissions:
+  contents: read
+
 jobs:
   build-pdfs:
     runs-on: ubuntu-latest
